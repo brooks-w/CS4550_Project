@@ -1,12 +1,13 @@
 :root {
   --color-1: #AA1803;
   --color-2: #BD613C; 
-  --color-3: #F1BAA1; 
-  --danger-color: #dc3545; 
-  --warning-color: #ffc107; 
-  --info-color: #17a2b8; 
-  --light-color: #f8f9fa;
-  --dark-color: #343a40;
+  --color-3: #F1BAA1;
+  --color-4: #BCAF4D;
+  --color-5: #6D8C00;
+}
+
+body {
+  background-color: var(--color-3);
 }
 
 .color-1 {
@@ -47,4 +48,15 @@
 
 .bg-color-5 {
     background-color: #6D8C00;
+}
+
+
+.btn-primary {
+    border-color: white;   
+    background-color: var(--color-1);
+}
+
+.btn-primary:hover {
+    border-color: white;
+    background-color: var(--color-5);   
 }

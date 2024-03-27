@@ -11,7 +11,7 @@ function Search() {
         <div>
             <h1>Search: query = "{query}"</h1>
                 <div className="container-fluid">
-                <ul>
+                <ul style={{listStyleType: "none"}}>
                     <li>
                         <ListEntryCard />
                     </li>

@@ -1,5 +1,20 @@
 .home-button-style {
     text-decoration: none;
     color: white;
-    font-size: 20px;
+    font-size: 16px;
+}
+
+.search-button-style {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+}
+
+.btn-primary-navbar {
+    border-color: white;   
+}
+
+.btn-primary-navbar:hover {
+    background-color: #AA1803;
+    border-color: white;   
 }
