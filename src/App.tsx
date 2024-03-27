@@ -6,14 +6,13 @@ import Details from "./Details";
 import NavBar from "./NavBar";
 import UserInfo from "./UserInfo";
 import Search from "./Search";
+import "./styles.css";
 
 function App() {
   return (
     <HashRouter>
+      <div className="bg-color-3">
       <NavBar />
-        
-
-        
         <div>
           <Routes>
             <Route path="*" element={<Navigate to="/home" />} />
@@ -23,6 +22,7 @@ function App() {
             <Route path="/details/:id/*" element={<Details />} />
             <Route path="/search/:query/*" element={<Search />}/>
           </Routes>
+        </div>
         </div>
     </HashRouter>
   );
