@@ -1,7 +1,7 @@
 function PublicUserInfo() {
     return (
         <>
-        <div className="container text-center">
+        <div className="container-fluid text-left">
         <div className="row align-items-start">
         <div className="col">
             <h1>Public User Info</h1>

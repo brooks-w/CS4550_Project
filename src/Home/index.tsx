@@ -2,7 +2,7 @@ import ListEntryCard from "../ListEntryCard";
 
 function Home() {
   return (
-    <div>
+    <div style={{height: '100%'}}>
       <h1>Home</h1>
       <div className="container-fluid">
         <div className="row">
