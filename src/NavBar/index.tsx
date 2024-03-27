@@ -18,7 +18,7 @@ function NavBar() {
       <button id="btnSearch">Search</button>
 
       <Link to="/home">Home </Link>
-      <Link to="/userinfo">Profile </Link>
+      <Link to="/account">Profile </Link>
     </div>
   );
 }
