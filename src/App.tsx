@@ -10,7 +10,8 @@ function App() {
   return (
     <HashRouter>
       <NavBar />
-      <div className="d-flex">
+        
+
         
         <div>
           <Routes>
@@ -18,10 +19,9 @@ function App() {
             <Route path="/home/*" element={<Home />} />
             <Route path="/userinfo/*" element={<UserInfo />} />
             <Route path="/account/*" element={<Account />} />
-            <Route path="/details/*" element={<Details />} />
+            <Route path="/details/:id/*" element={<Details />} />
           </Routes>
         </div>
-      </div>
     </HashRouter>
   );
 }
