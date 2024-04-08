@@ -1,9 +1,9 @@
 import ListEntryCard from "../ListEntryCard";
+import { useSelector } from "react-redux";
 
 function Home() {
   return (
     <div style={{height: '100%'}}>
-      <h1>Home</h1>
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-6">
