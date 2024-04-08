@@ -6,6 +6,7 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 
 function NavBar() {
   const [query, setQuery] = useState("");
+  const [queryType, setQueryType] = useState("");
 
   const updateSearchQuery = (event: {
     target: { value: SetStateAction<string> };
@@ -13,6 +14,15 @@ function NavBar() {
     setQuery(event.target.value);
     console.log("Query is:", event.target.value);
   };
+
+  const updateSearchQueryType = (event: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setQueryType(event.target.value);
+    console.log("Type is:", event.target.value);
+  };
+
+  
 
   return (
     <div className="container-fluid form-group">
@@ -45,7 +55,11 @@ function NavBar() {
               />
             </div>
             <div className="col-5">
-              <select className="form-control" title="Type">
+              <select
+                className="form-control"
+                title="Type"
+                onChange={updateSearchQueryType}
+              >
                 <option value="#">All</option>
                 <option value="artist">Artist</option>
                 <option value="album">Album</option>
@@ -54,9 +68,13 @@ function NavBar() {
               </select>
             </div>
             <div className="col-2 btn btn-primary-navbar bg-color-5">
-            <Link className="search-button-style"  id="btnSearch" to={"/search/" + query}>
-              Search
-            </Link>
+              <Link
+                className="search-button-style"
+                id="btnSearch"
+                to={"/search/" + queryType + '/' + query}
+              >
+                Search
+              </Link>
             </div>
           </div>
         </div>
