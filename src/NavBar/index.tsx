@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import "./index.css";
 import { MdHome } from "react-icons/md";
 import { IoPersonCircleOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
+
 
 function NavBar() {
   const [query, setQuery] = useState("");
   const [queryType, setQueryType] = useState("");
+  const { currentUser } = useSelector((state: any) => state.users);
 
   const updateSearchQuery = (event: {
     target: { value: SetStateAction<string> };
@@ -36,10 +39,18 @@ function NavBar() {
               </Link>
             </div>
             <div className="col-2 btn btn-primary-navbar bg-color-5">
-              <Link className="home-button-style" to="/account">
+              {currentUser && (
+              <Link className="home-button-style" to="/account/profile">
                 <IoPersonCircleOutline />
                 Profile{" "}
               </Link>
+                )}
+              {!currentUser && (
+              <Link className="home-button-style" to="/account/signin">
+                <IoPersonCircleOutline />
+                Profile{" "}
+              </Link>
+                )}
             </div>
           </div>
         </div>

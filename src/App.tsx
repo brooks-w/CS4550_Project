@@ -7,9 +7,14 @@ import NavBar from "./NavBar";
 import UserInfo from "./UserInfo";
 import Search from "./Search";
 import "./styles.css";
+import store from "./store";
+import { Provider } from "react-redux";
+import CurrentUser from "./Users/CurrentUser";
 
 function App() {
   return (
+    <Provider store={store}>
+      <CurrentUser>
       <HashRouter>
         <NavBar />
         <div>
@@ -23,6 +28,8 @@ function App() {
           </Routes>
         </div>
       </HashRouter>
+      </CurrentUser>
+    </Provider>
   );
 }
 
