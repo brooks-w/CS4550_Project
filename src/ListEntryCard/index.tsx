@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
+
 function ListEntryCard({
   title = "title",
   descriptionLeft = "desc-left",
   descriptionRight = "desc-right",
   summary = "summary",
   imageURL = "https://i.imgur.com/2d8J3tj.jpg",
+  url = "#"
 }) {
   return (
     <div className="card mb-3">
@@ -18,7 +21,9 @@ function ListEntryCard({
         </div>
         <div className="col-md-8">
           <div className="card-body">
-            <div className="card-title">{title}</div>
+            <div className="card-title">
+              <Link to={url}>{title}</Link>
+            </div>
             <div className="card-text container-fluid">
               <div className="row">
                 <div className="col-6">{descriptionLeft}</div>
