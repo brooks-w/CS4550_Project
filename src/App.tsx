@@ -24,7 +24,7 @@ function App() {
             <Route path="/userinfo/*" element={<UserInfo />} />
             <Route path="/account/*" element={<Account />} />
             <Route path="/details/:type/:id/*" element={<Details />} />
-            <Route path="/search/:query/*" element={<Search />} />
+            <Route path="/search/:type/:query/*" element={<Search />} />
           </Routes>
         </div>
       </HashRouter>

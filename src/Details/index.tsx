@@ -1,28 +1,23 @@
 import { useParams } from "react-router";
+import SongEntryCard from "../SongEntryCard";
+import ListEntryCard from "../ListEntryCard";
+import MusicBrainzAPI from "../MusicBrainz";
+import React, { useEffect } from "react";
+import LastFMAPI from "../LastFM";
+import ArtistDetails from "./ArtistDetails";
+import AlbumDetails from "./AlbumDetails";
 
 function Details() {
-  const { type, id } = useParams();
+  let { type, id } = useParams();
 
-  if (type === "artist") {
-    return returnArtist(id);
-  } else if (type === "album") {
-    return returnAlbum(id);
-  } else {
-    return <h1> Improper fields</h1>;
+  if (id == undefined) {
+    id = "";
   }
-}
-function returnArtist(id: any) {
-  return (
-    <div>
-      <h1> Details about artist {id} </h1>
-    </div>
-  );
-}
 
-function returnAlbum(id: any) {
   return (
     <div>
-      <h1> Details about album {id} </h1>
+      {type === "artist" && <ArtistDetails mbid={id} />}
+      {type === "album" && <AlbumDetails mbid={id} />}
     </div>
   );
 }

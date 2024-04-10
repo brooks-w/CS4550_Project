@@ -1,3 +1,10 @@
+### TOdo Details:
+- artist details
+    - follow btn before discography
+- album details
+    - like btn next to each song
+- like albums, follow artists
+
 # Todos:
 ## Sign-in:
 - on modifying user properties redux does not update until relogin
