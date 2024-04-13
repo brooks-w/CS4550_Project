@@ -1,3 +1,4 @@
+import AlbumEntryCard from "../AlbumEntryCard";
 import ListEntryCard from "../ListEntryCard";
 
 function AlbumList({albums}: {albums: any[]}) {
@@ -9,10 +10,10 @@ function AlbumList({albums}: {albums: any[]}) {
         album.mbid && 
         (
           <li>
-            <ListEntryCard
+            <AlbumEntryCard
               url={"/details/album/" + album.mbid}
               title={album.name}
-              descriptionLeft={album.artist}
+              artist={album.artist}
               descriptionRight=""
               summary=""
               imageURL={album.image[2]['#text']}
