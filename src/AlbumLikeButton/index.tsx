@@ -24,7 +24,7 @@ function AlbumLikeButton({ name, mbid }: { name: string; mbid: string }) {
         </button>
       )}
       {currentUser && currentUser.role === "LISTENER" && /*!usersWhoLikedAlbum.includes(currentUser._id) && */ (
-        <button onClick={() => client.userUnlikesAlbum({ name: name, mbid: mbid })}>
+        <button onClick={() => {console.log("Unlike MBID: ", mbid);client.userUnlikesAlbum({ name: name, mbid: mbid })}}>
           UNLIKE HERE
         </button>
       )}

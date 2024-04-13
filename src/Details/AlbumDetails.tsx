@@ -65,7 +65,7 @@ function AlbumDetails({ mbid }: { mbid: string }) {
         <div className="row">
           <div className="col-md-6">
             <h1> {data?.name} </h1> 
-            <AlbumLikeButton name={data?.name || ""} mbid={data?.mbid || ""}/>
+            <AlbumLikeButton name={data?.name || ""} mbid={mbid || ""}/>
             <h3> {data?.artist}</h3>
             {data?.wiki?.summary}
           </div>
