@@ -13,6 +13,7 @@ export interface User {
   favArtist: string;
 }
 
+const NODE_API = process.env.REACT_APP_NODE_API;
 const axiosWithCredentials = axios.create({
     withCredentials: true,
 });
@@ -46,3 +47,24 @@ export const createUser = async (user: any) => {
     return response.data;
 }
 
+export const userLikesAlbum = async (album: any) => {
+    const response = await axiosWithCredentials.post(
+      `${NODE_API}/api/likes`,
+      album
+    );
+    return response.data;
+   };
+
+export const userUnlikesAlbum = async (mbid: any) => { 
+    const response = await axiosWithCredentials.delete(
+        `${NODE_API}/api/likes/${mbid}`,
+        );
+        return response.data;
+}
+
+export const findUsersWhoLikedAlbum = async (album: any) => {
+    const response = await axiosWithCredentials.get(
+      `${NODE_API}/api/albums/${album.mbid}/likes`
+    );
+    return response.data;
+  };
