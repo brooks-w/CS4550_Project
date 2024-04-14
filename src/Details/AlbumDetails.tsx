@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import LastFMAPI from "../LastFM";
 import SongEntryCard from "../SongEntryCard";
+import { useSelector } from "react-redux";
+import { userLikesAlbum }from "../Users/client"
+import AlbumLikeButton from "../AlbumLikeButton";
 
 interface Track {
   name?: string;
@@ -10,6 +13,7 @@ interface Track {
 // for storing liked tracks, we can record albumID and track name since we do not have a trackid
 
 interface Album {
+  mbid: string;
   name: string;
   artist?: string;
   image?: {
@@ -26,9 +30,14 @@ interface Album {
 }
 
 function AlbumDetails({ mbid }: { mbid: string }) {
+  const { currentUser } = useSelector((state: any) => state.users);
+
   const lfmAPI = new LastFMAPI();
 
   const [data, setData] = useState<Album | null>(null);
+  
+
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,13 +50,6 @@ function AlbumDetails({ mbid }: { mbid: string }) {
     };
     fetchData();
   }, [mbid]);
-
-  const artist = "The Eagles";
-  const summary =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-  const numTracks = 13;
-  const songs = ["Doolin-Dalton", "Desperado", "Wasted Time"];
-  const year = 1978;
 
   function secToMin(seconds: string) {
     const time = parseInt(seconds);
@@ -65,7 +67,8 @@ function AlbumDetails({ mbid }: { mbid: string }) {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-6">
-            <h1> {data?.name} </h1>
+            <h1> {data?.name} </h1> 
+            <AlbumLikeButton name={data?.name || ""} mbid={mbid || ""}/>
             <h3> {data?.artist}</h3>
             {data?.wiki?.summary}
           </div>
