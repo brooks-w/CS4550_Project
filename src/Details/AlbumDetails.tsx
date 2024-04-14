@@ -26,7 +26,7 @@ interface Album {
   wiki?: {
     content?: string;
     summary?: string;
-  };
+};
 }
 
 function AlbumDetails({ mbid }: { mbid: string }) {
@@ -77,14 +77,14 @@ function AlbumDetails({ mbid }: { mbid: string }) {
           </div>
         </div>
 
-        <div className="row justify-content-center">
+        <div className="row">
           <div className="col-8 ">
             <ul>
               {data?.tracks &&
               data.tracks.track.length > 0 &&
               data?.tracks?.track.map((track, key) => (
                 <li key="key">
-                  <SongEntryCard title={track.name} length={track.duration && secToMin(track?.duration)} />
+                  <SongEntryCard title={track.name} length={track.duration && secToMin(track?.duration)} index={(key+1).toString()}/>
                 </li>
               ))}
             </ul>

@@ -60,3 +60,7 @@ body {
     border-color: white;
     background-color: var(--color-5);   
 }
+
+ul {
+  list-style-type: none;
+}

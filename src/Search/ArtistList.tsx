@@ -1,3 +1,5 @@
+import ArtistEntryCard from "../ArtistEntryCard";
+import ArtistDetails from "../Details/ArtistDetails";
 import ListEntryCard from "../ListEntryCard";
 
 function ArtistList({artists}: {artists: any[]}) {
@@ -7,13 +9,11 @@ function ArtistList({artists}: {artists: any[]}) {
       <ul>
         {artists.map((artist, index) => (
           <li key={index}>
-            <ListEntryCard
-              url={"/details/artist/" + artist.mbid}
+            <ArtistEntryCard
               title={artist.name}
               descriptionLeft={artist.listeners + " listeners"}
-              descriptionRight=""
               imageURL={artist.image[4]['#text']}
-
+              mbid= {artist.mbid}
             />
           </li>
         ))}
