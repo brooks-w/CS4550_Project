@@ -10,24 +10,26 @@ import "./styles.css";
 import store from "./store";
 import { Provider } from "react-redux";
 import CurrentUser from "./Users/CurrentUser";
+import LikedBy from "./LikedBy";
 
 function App() {
   return (
     <Provider store={store}>
       <CurrentUser>
-      <HashRouter>
-        <NavBar />
-        <div>
-          <Routes>
-            <Route path="*" element={<Navigate to="/home" />} />
-            <Route path="/home/*" element={<Home />} />
-            <Route path="/userinfo/*" element={<UserInfo />} />
-            <Route path="/account/*" element={<Account />} />
-            <Route path="/details/:type/:id/*" element={<Details />} />
-            <Route path="/search/:type/:query/*" element={<Search />} />
-          </Routes>
-        </div>
-      </HashRouter>
+        <HashRouter>
+          <NavBar />
+          <div className="d-flex justify-content-center align-items-center">
+            <Routes>
+              <Route path="*" element={<Navigate to="/home" />} />
+              <Route path="/home/*" element={<Home />} />
+              <Route path="/userinfo/*" element={<UserInfo />} />
+              <Route path="/account/*" element={<Account />} />
+              <Route path="/details/:type/:id/*" element={<Details />} />
+              <Route path="/search/:type/:query/*" element={<Search />} />
+              <Route path="/likedby/:mbid" element={<LikedBy />} />
+            </Routes>
+          </div>
+        </HashRouter>
       </CurrentUser>
     </Provider>
   );

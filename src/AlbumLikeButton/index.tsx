@@ -1,20 +1,15 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import * as client from "../Users/client";
+import { Link } from "react-router-dom";
 
 function AlbumLikeButton({ name, mbid }: { name: string; mbid: string }) {
   const { currentUser } = useSelector((state: any) => state.users);
-
-  useEffect(() => {
-    console.log("Props updated in AlbumLikeButton: ", { name, mbid });
-  }, [name, mbid]);
-
   const [usersWhoLikedAlbum, setUsersWhoLikedAlbum] = useState<any>([]);
 
   const findUsersWhoLikedAlbum = async (albumId: String) => {
     const users = await client.findUsersWhoLikedAlbum(albumId);
-    
-    
+
     setUsersWhoLikedAlbum(users);
   };
 
@@ -41,10 +36,19 @@ function AlbumLikeButton({ name, mbid }: { name: string; mbid: string }) {
   return (
     <>
       {currentUser && currentUser.role === "LISTENER" && !isUserInLikedList && (
-       <button onClick={handleLike}>LIKE HERE</button>
+        <button className="btn btn-success" onClick={handleLike}>
+          LIKE HERE
+        </button>
       )}
       {currentUser && currentUser.role === "LISTENER" && isUserInLikedList && (
-        <button onClick={handleUnlike}>UNLIKE HERE</button>
+        <button className="btn btn-danger" onClick={handleUnlike}>
+          UNLIKE HERE
+        </button>
+      )}
+      {currentUser && currentUser.role === "ARTIST" && (
+        <Link className="btn btn-primary" to={"/likedby/" + mbid}>
+          View Users who liked
+        </Link>
       )}
     </>
   );

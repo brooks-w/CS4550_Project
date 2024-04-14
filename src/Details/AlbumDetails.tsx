@@ -10,7 +10,6 @@ interface Track {
   duration?: string;
 }
 
-// for storing liked tracks, we can record albumID and track name since we do not have a trackid
 
 interface Album {
   mbid: string;
