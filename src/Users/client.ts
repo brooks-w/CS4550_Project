@@ -70,9 +70,9 @@ export const userUnlikesAlbum = async (mbid: any) => {
   return response.data;
 };
 
-export const findUsersWhoLikedAlbum = async (album: any) => {
+export const findUsersWhoLikedAlbum = async (mbid: any) => {
   const response = await axiosWithCredentials.get(
-    `${NODE_API}/api/albums/${album.mbid}/likes`
+    `${NODE_API}/api/albums/${mbid}/likes`
   );
   return response.data;
 };

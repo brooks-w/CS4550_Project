@@ -35,6 +35,9 @@ function AlbumDetails({ mbid }: { mbid: string }) {
   const lfmAPI = new LastFMAPI();
 
   const [data, setData] = useState<Album | null>(null);
+  
+
+
 
   useEffect(() => {
     const fetchData = async () => {
