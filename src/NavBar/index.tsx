@@ -40,7 +40,7 @@ function NavBar() {
             </div>
             <div className="col-2 btn btn-primary-navbar bg-color-5">
               {currentUser && (
-              <Link className="home-button-style" to="/account/profile">
+              <Link className="home-button-style" to={"/account/profile/"+currentUser.username}>
                 <IoPersonCircleOutline />
                 Profile{" "}
               </Link>

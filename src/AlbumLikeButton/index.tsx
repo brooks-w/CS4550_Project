@@ -38,12 +38,12 @@ function AlbumLikeButton({ name, mbid }: { name: string; mbid: string }) {
 
   return (
     <>
-      {currentUser && currentUser.role === "LISTENER" && !isUserInLikedList && (
+      {currentUser && !isUserInLikedList && (
         <button className="btn btn-success" onClick={handleLike}>
           LIKE HERE
         </button>
       )}
-      {currentUser && currentUser.role === "LISTENER" && isUserInLikedList && (
+      {currentUser && isUserInLikedList && (
         <button className="btn btn-danger" onClick={handleUnlike}>
           UNLIKE HERE
         </button>

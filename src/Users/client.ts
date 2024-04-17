@@ -11,6 +11,8 @@ export interface User {
   email: string;
   favSong: string;
   favArtist: string;
+  likedAlbums: any[];
+  claimedArtistMBID: string;
 }
 
 const NODE_API = process.env.REACT_APP_NODE_API;
@@ -79,5 +81,10 @@ export const findUsersWhoLikedAlbum = async (mbid: any) => {
 
   return response.data;
 };
+
+export const findUserByUsername = async (username: any) => {
+  const response = await axiosWithCredentials.get(`${USERS_API}/${username}`);
+  return response.data;
+}
 
 

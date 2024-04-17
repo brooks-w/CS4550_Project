@@ -15,7 +15,7 @@ interface Artist {
 
 function ArtistEntryCard({
   title = "title",
-  descriptionLeft = "desc-left",
+  descriptionLeft = "",
   descriptionRight = "",
   imageURL = "https://i.imgur.com/2d8J3tj.jpg",
   mbid = "",
@@ -51,7 +51,7 @@ function ArtistEntryCard({
         <div className="col-md-8">
           <div className="card-body">
             <div className="card-title">
-              <Link to={url}>{title}</Link>
+              <Link to={url}>{data?.name}</Link>
             </div>
             <div className="card-text container-fluid">
               <div className="row">

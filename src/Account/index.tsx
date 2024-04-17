@@ -11,7 +11,7 @@ export default function Account() {
         <Route path="/" element={<Navigate to="/Account/Signin" />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Signin" element={<Signin />} />
-        <Route path="/Profile" element={<Profile />} />
+        <Route path="/Profile/:username" element={<Profile />} />
       </Routes>
     </div>
   );
