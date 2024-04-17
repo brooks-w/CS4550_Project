@@ -75,7 +75,8 @@ function LikedBy() {
           </div>
 
           <ul>
-            {usersWhoLikedAlbum.map((user: any, key: any) => (
+            {usersWhoLikedAlbum.length > 0
+            && usersWhoLikedAlbum.map((user: any, key: any) => (
               <li>
                 <Link to={"/account/profile/" + user._id}>
                   <h3>{user.username}</h3>

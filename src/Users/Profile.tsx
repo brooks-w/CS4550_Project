@@ -1,9 +1,9 @@
 import * as client from "./client";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCurrentUser } from "./reducer";
-
+import { text } from "stream/consumers";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -17,13 +17,18 @@ export default function Profile() {
     favSong: "",
     favArtist: "",
     role: "",
+    claimedArtistMBID: "",
   });
+
+  const {uid} = useParams();
+
+  const [artistQuery, setArtistQuery] = useState("");
 
   const fetchProfile = async () => {
     try {
-    const user = await client.profile();
-    setUser(user);
-    dispatch(setCurrentUser(user));
+      const user = await client.profile();
+      setUser(user);
+      dispatch(setCurrentUser(user));
     } catch (error) {
       dispatch(setCurrentUser(null));
       navigate("/Account/Signin");
@@ -49,58 +54,53 @@ export default function Profile() {
           <label>Username: </label>
           <input
             value={user.username}
-            onChange={(e) =>
-              setUser({ ...user, username: e.target.value })
-            }
-          /> <br />
-           
+            onChange={(e) => setUser({ ...user, username: e.target.value })}
+          />{" "}
+          <br />
           <label>Password: </label>
           <input
             value={user.password}
-            onChange={(e) =>
-              setUser({ ...user, password: e.target.value })
-            }
-          /> <br />
-
+            onChange={(e) => setUser({ ...user, password: e.target.value })}
+          />{" "}
+          <br />
           <label>First Name:</label>
           <input
             value={user.firstName}
-            onChange={(e) =>
-              setUser({ ...user, firstName: e.target.value })
-            }
-          /> <br />
-
+            onChange={(e) => setUser({ ...user, firstName: e.target.value })}
+          />{" "}
+          <br />
           <label>Last Name: </label>
           <input
             value={user.lastName}
-            onChange={(e) =>
-              setUser({ ...user, lastName: e.target.value })
-            }
-          /> <br />
-
+            onChange={(e) => setUser({ ...user, lastName: e.target.value })}
+          />{" "}
+          <br />
           <label>Email: </label>
           <input
             value={user.email}
             onChange={(e) => setUser({ ...user, email: e.target.value })}
-          /> <br />
-
+          />{" "}
+          <br />
           <label>Favorite Song: </label>
           <input
             value={user.favSong}
-            onChange={(e) =>
-              setUser({ ...user, favSong: e.target.value })
-            }
-          /> <br />
-
+            onChange={(e) => setUser({ ...user, favSong: e.target.value })}
+          />{" "}
+          <br />
           <label>Favorite Artist: </label>
           <input
             value={user.favArtist}
-            onChange={(e) =>
-              setUser({ ...user, favArtist: e.target.value })
-            }
-          /> <br />
-          <span>ROLE: {user.role}</span> <br/>
-
+            onChange={(e) => setUser({ ...user, favArtist: e.target.value })}
+          />{" "}
+          <br />
+          <span>ROLE: {user.role}</span> <br />
+          <label>Claim Artist: </label>
+          <input
+          value={user.claimedArtistMBID}
+            onChange={(e) => setArtistQuery(e.target.value)}
+          />{" "}
+          <Link to={"/claimArtist/"+artistQuery}>Search</Link>
+          <br />
           <button onClick={save}> Save </button>
           <button onClick={signout}> Signout </button>
         </div>

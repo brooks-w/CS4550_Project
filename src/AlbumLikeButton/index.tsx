@@ -29,9 +29,12 @@ function AlbumLikeButton({ name, mbid }: { name: string; mbid: string }) {
     );
   };
 
-  const isUserInLikedList = usersWhoLikedAlbum.some(
-    (user: any) => user._id === currentUser?._id
-  );
+  let isUserInLikedList = false;
+  if (usersWhoLikedAlbum) {
+    isUserInLikedList = usersWhoLikedAlbum.some(
+      (user: any) => user._id === currentUser?._id
+    );
+  }
 
   return (
     <>

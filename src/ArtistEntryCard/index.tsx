@@ -16,10 +16,10 @@ interface Artist {
 function ArtistEntryCard({
   title = "title",
   descriptionLeft = "desc-left",
-  descriptionRight = "desc-right",
+  descriptionRight = "",
   imageURL = "https://i.imgur.com/2d8J3tj.jpg",
-
   mbid = "",
+  url = ""
 }) {
   const lfmAPI = new LastFMAPI();
 
@@ -51,7 +51,7 @@ function ArtistEntryCard({
         <div className="col-md-8">
           <div className="card-body">
             <div className="card-title">
-              <Link to={"/details/artist/" + mbid}>{title}</Link>
+              <Link to={url}>{title}</Link>
             </div>
             <div className="card-text container-fluid">
               <div className="row">

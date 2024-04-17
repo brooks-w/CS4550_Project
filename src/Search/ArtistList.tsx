@@ -14,6 +14,7 @@ function ArtistList({artists}: {artists: any[]}) {
               descriptionLeft={artist.listeners + " listeners"}
               imageURL={artist.image[4]['#text']}
               mbid= {artist.mbid}
+              url = {"/details/artist/" + artist.mbid}
             />
           </li>
         ))}
