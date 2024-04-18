@@ -77,8 +77,6 @@ export const findUsersWhoLikedAlbum = async (mbid: any) => {
     `${NODE_API}/api/albums/${mbid}/likes`
   );
 
-
-
   return response.data;
 };
 
@@ -86,5 +84,6 @@ export const findUserByUsername = async (username: any) => {
   const response = await axiosWithCredentials.get(`${USERS_API}/${username}`);
   return response.data;
 }
+
 
 

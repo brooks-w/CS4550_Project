@@ -66,8 +66,14 @@ function AlbumDetails({ mbid }: { mbid: string }) {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-6">
-            <h1> {data?.name} </h1> 
+
+            <div style={{display: "flex", alignItems: "center"}}>
+            <h1> {data?.name} </h1>
+            <div style={{marginLeft: "20px"}}>
             <AlbumLikeButton name={data?.name || ""} mbid={mbid || ""}/>
+            </div>
+            </div>
+
             <h3> {data?.artist}</h3>
             {data?.wiki?.summary}
           </div>

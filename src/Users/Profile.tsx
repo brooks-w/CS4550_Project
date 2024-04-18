@@ -115,7 +115,7 @@ export default function Profile() {
         && user.likesAlbum.map((album: any, key: any) => (
           <li>
             <Link to={"/album/" + album.mbid}>
-              <h3>{album[0].populate("album").mbid}</h3>
+              {/* <h3>{album[0].populate("album").mbid}</h3> */}
             </Link>
           </li>
         ))}

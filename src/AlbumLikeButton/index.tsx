@@ -2,6 +2,10 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import * as client from "../Users/client";
 import { Link } from "react-router-dom";
+import { GoHeart } from "react-icons/go";
+import { GoHeartFill } from "react-icons/go";
+
+
 
 function AlbumLikeButton({ name, mbid }: { name: string; mbid: string }) {
   const { currentUser } = useSelector((state: any) => state.users);
@@ -39,13 +43,13 @@ function AlbumLikeButton({ name, mbid }: { name: string; mbid: string }) {
   return (
     <>
       {currentUser && !isUserInLikedList && (
-        <button className="btn btn-success" onClick={handleLike}>
-          LIKE HERE
+        <button style={{backgroundColor: "transparent", border: "none", cursor: "pointer" }} onClick={handleLike}>
+          <GoHeart style={{fontSize: "30px", borderColor: "white"}}/> Like Album
         </button>
       )}
       {currentUser && isUserInLikedList && (
-        <button className="btn btn-danger" onClick={handleUnlike}>
-          UNLIKE HERE
+        <button style={{backgroundColor: "transparent", border: "none", cursor: "pointer" }} onClick={handleUnlike}>
+        <GoHeartFill style={{fontSize: "30px", color: "red"}}/> Unlike Album
         </button>
       )}
       {currentUser && currentUser.role === "ARTIST" && (

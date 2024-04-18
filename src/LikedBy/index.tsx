@@ -73,7 +73,6 @@ function LikedBy() {
               <img src={data?.image?.[5]?.["#text"] ?? ""} />
             </div>
           </div>
-
           <ul>
             {usersWhoLikedAlbum.length > 0
             && usersWhoLikedAlbum.map((user: any, key: any) => (
