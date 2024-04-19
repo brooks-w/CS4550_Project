@@ -27,6 +27,13 @@ export default function Profile() {
 
   const [artistQuery, setArtistQuery] = useState("");
 
+  if(username === undefined) {
+    navigate("/Account/profile/"+user.username);
+  }
+
+
+  
+
   const fetchProfile = async () => {
     try {
       const user = await client.profile();
@@ -45,6 +52,9 @@ export default function Profile() {
     dispatch(setCurrentUser(null));
     navigate("/Account/Signin");
   };
+  const deleteAccount = async () => {
+    await client.deleteUser(user);
+  }
   useEffect(() => {
     fetchProfile();
   }, []);
@@ -111,14 +121,14 @@ export default function Profile() {
       {user && (
       <>
       <ul>
-        {user.likesAlbum && user.likesAlbum.length > 0
+        {/* {user.likesAlbum && user.likesAlbum.length > 0
         && user.likesAlbum.map((album: any, key: any) => (
           <li>
             <Link to={"/album/" + album.mbid}>
-              {/* <h3>{album[0].populate("album").mbid}</h3> */}
+              { <h3>{album[0].populate("album").mbid}</h3> }
             </Link>
           </li>
-        ))}
+        ))} */}
       </ul>
       </>
       )}

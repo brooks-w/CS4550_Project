@@ -8,7 +8,7 @@ export default function Signup() {
   const signup = async () => {
     try {
       await client.signup(user);
-      navigate("/Account/Profile");
+      navigate("/Account/Profile/"+user.username);
     } catch (err: any) {
       setError(err.response.data.message);
     }

@@ -71,11 +71,8 @@ function NavBar() {
                 title="Type"
                 onChange={updateSearchQueryType}
               >
-                <option value="#">All</option>
                 <option value="artist">Artist</option>
                 <option value="album">Album</option>
-                <option value="song">Song</option>
-                <option value="user">Users</option>
               </select>
             </div>
             <div className="col-2 btn btn-primary-navbar bg-color-5">

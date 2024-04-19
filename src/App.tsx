@@ -26,6 +26,7 @@ function App() {
               <Route path="/userinfo/*" element={<UserInfo />} />
               <Route path="/account/*" element={<Account />} />
               <Route path="/details/:type/:id/*" element={<Details />} />
+              <Route path="/search/:type/" element={<Search />} />
               <Route path="/search/:type/:query/*" element={<Search />} />
               <Route path="/likedby/:mbid" element={<LikedBy />} />
               <Route path="/claimartist/:query" element={<ClaimArtist />} />
