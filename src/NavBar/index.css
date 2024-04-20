@@ -1,19 +1,24 @@
 .home-button-style {
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .search-button-style {
-    text-decoration: none;
-    color: white;
-    font-size: 16px;
-  }
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button-style {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
   
   .btn-primary-navbar {
     border-color: white;
+    align-items: center;
     transition: background-color 0.3s ease;
   }
   
