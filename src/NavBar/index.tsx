@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 function NavBar() {
   const [query, setQuery] = useState("");
-  const [queryType, setQueryType] = useState("");
+  const [queryType, setQueryType] = useState("artist");
   const { currentUser } = useSelector((state: any) => state.users);
 
   const updateSearchQuery = (event: {
@@ -28,69 +28,55 @@ function NavBar() {
   
 
   return (
-    <div className="container-fluid form-group">
+    <div className="container-fluid form-group navbar-container">
+  <div className="row p-2 navbar-row">
+    <div className="col-6">
       <div className="row">
-        <div className="col-6">
-          <div className="row">
-            <div className="col-2 btn btn-primary-navbar bg-color-5">
-              <Link className="home-button-style" to="/home">
-                <MdHome />
-                Home{" "}
-              </Link>
-            </div>
-            <div className="col-2 btn btn-primary-navbar bg-color-5">
-              {currentUser && (
-              <Link className="home-button-style" to="/account/profile">
-                <IoPersonCircleOutline />
-                Profile{" "}
-              </Link>
-                )}
-              {!currentUser && (
-              <Link className="home-button-style" to="/account/signin">
-                <IoPersonCircleOutline />
-                Profile{" "}
-              </Link>
-                )}
-            </div>
-          </div>
+        <div className="col-2 p-2 btn btn-primary-navbar bg-color-5">
+          <Link className="home-button-style" to="/home">
+            <MdHome className="navbar-icon" /> Home
+          </Link>
         </div>
-        <div className="col-6">
-          <div className="row float-end">
-            <div className="col-5">
-              <input
-                type="text"
-                id="txtSearch"
-                className="form-control"
-                placeholder="Enter search query"
-                onChange={updateSearchQuery}
-              />
-            </div>
-            <div className="col-5">
-              <select
-                className="form-control"
-                title="Type"
-                onChange={updateSearchQueryType}
-              >
-                <option value="#">All</option>
-                <option value="artist">Artist</option>
-                <option value="album">Album</option>
-                <option value="song">Song</option>
-                <option value="user">Users</option>
-              </select>
-            </div>
-            <div className="col-2 btn btn-primary-navbar bg-color-5">
-              <Link
-                className="search-button-style"
-                id="btnSearch"
-                to={"/search/" + queryType + '/' + query}
-              >
-                Search
-              </Link>
-            </div>
-          </div>
+        <div className="col-2 p-2 btn btn-primary-navbar bg-color-5">
+          {currentUser && (
+            <Link className="home-button-style" to={"/account/profile/" + currentUser.username}>
+              <IoPersonCircleOutline className="navbar-icon" /> Profile
+            </Link>
+          )}
+          {!currentUser && (
+            <Link className="home-button-style" to="/account/signin">
+              <IoPersonCircleOutline className="navbar-icon" /> Profile
+            </Link>
+          )}
         </div>
       </div>
     </div>
+    <div className="col-6">
+      <div className="row float-end">
+        <div className="col-5">
+          <input
+            type="text"
+            id="txtSearch"
+            className="form-control"
+            placeholder="Enter search query"
+            onChange={updateSearchQuery}
+          />
+        </div>
+        <div className="col-5">
+          <select className="form-control" title="Type" onChange={updateSearchQueryType}>
+            <option value="artist">Artist</option>
+            <option value="album">Album</option>
+          </select>
+        </div>
+        <div className="col-2 btn btn-primary-navbar bg-color-5">
+          <Link className="search-button-style" id="btnSearch" to={"/search/" + queryType + '/' + query}>
+            Search
+          </Link>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   );
 }
 

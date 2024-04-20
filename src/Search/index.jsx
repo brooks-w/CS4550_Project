@@ -42,14 +42,19 @@ function Search() {
 
   return (
     <div className="container-fluid">
-      {results && results.results && (
+      {query && results && results.results && (
         <>
-          {type === "artist" && (
-            <ArtistList artists={results.results.artistmatches.artist} />
+          {type === "artist" &&(
+            <ArtistList artists={results.results.artistmatches.artist.filter((artist) => artist.mbid != "")} />
           )}
-          {type === "album" && (
+          {type === "album" &&(
             <AlbumList albums={results.results.albummatches.album} />
           )}
+        </>
+      )}
+      {!query &&(
+        <>
+          <h2>Please enter a search query</h2>
         </>
       )}
     </div>

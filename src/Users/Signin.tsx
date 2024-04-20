@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { User } from "./client";
 import * as client from "./client";
+import userEvent from "@testing-library/user-event";
 export default function Signin() {
   const [credentials, setCredentials] = useState<User>({
     _id: "",
@@ -13,11 +14,13 @@ export default function Signin() {
     email: "",
     favSong: "",
     favArtist: "",
+    likedAlbums: [],
+    claimedArtistMBID: "",
   });
   const navigate = useNavigate();
   const signin = async () => {
     await client.signin(credentials);
-    navigate("/Account/Profile");
+    navigate("/Account/Profile/" + credentials.username);
   };
   return (
     <div>

@@ -11,6 +11,8 @@ export interface User {
   email: string;
   favSong: string;
   favArtist: string;
+  likedAlbums: any[];
+  claimedArtistMBID: string;
 }
 
 const NODE_API = process.env.REACT_APP_NODE_API;
@@ -53,6 +55,12 @@ export const createUser = async (user: any) => {
   return response.data;
 };
 
+export const deleteUser = async (user: any) => {
+  const response = await axiosWithCredentials.delete(`${USERS_API}`, user._id);
+  return response.data;
+};
+
+
 export const userLikesAlbum = async (album: any) => {
   const response = await axiosWithCredentials.post(
     `${NODE_API}/api/likes`,
@@ -63,7 +71,10 @@ export const userLikesAlbum = async (album: any) => {
 
 export const userUnlikesAlbum = async (mbid: any) => {
   console.log("userUnlikesAlbum Client mbid: ", mbid.mbid);
-  console.log("userUnlikesAlbum api delete call: ",  `${NODE_API}/api/likes/${mbid.mbid}`);
+  console.log(
+    "userUnlikesAlbum api delete call: ",
+    `${NODE_API}/api/likes/${mbid.mbid}`
+  );
   const response = await axiosWithCredentials.delete(
     `${NODE_API}/api/likes/${mbid.mbid}`
   );
@@ -74,5 +85,23 @@ export const findUsersWhoLikedAlbum = async (mbid: any) => {
   const response = await axiosWithCredentials.get(
     `${NODE_API}/api/albums/${mbid}/likes`
   );
+
+  return response.data;
+};
+
+export const findUserByUsername = async (username: any) => {
+  const response = await axiosWithCredentials.get(`${USERS_API}/${username}`);
+  return response.data;
+};
+
+export const findUserByUid = async (uid: any) => {
+  const response = await axiosWithCredentials.get(`${USERS_API}/id/${uid}`);
+  return response.data;
+};
+
+
+
+export const getAllLikes = async () => {
+  const response = await axiosWithCredentials.get(`${NODE_API}/api/likes`);
   return response.data;
 };

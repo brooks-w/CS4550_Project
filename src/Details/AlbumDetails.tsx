@@ -4,12 +4,12 @@ import SongEntryCard from "../SongEntryCard";
 import { useSelector } from "react-redux";
 import { userLikesAlbum }from "../Users/client"
 import AlbumLikeButton from "../AlbumLikeButton";
+import { Link } from "react-router-dom";
 
 interface Track {
   name?: string;
   duration?: string;
 }
-
 
 interface Album {
   mbid: string;
@@ -35,6 +35,7 @@ function AlbumDetails({ mbid }: { mbid: string }) {
 
   const [data, setData] = useState<Album | null>(null);
   
+  const [artistMbid, setArtistMbid] = useState("");
 
 
 
@@ -43,9 +44,13 @@ function AlbumDetails({ mbid }: { mbid: string }) {
       console.log("Fetch data started");
 
       const response = await lfmAPI.getAlbumInfo(mbid);
+      const artistResponse = await lfmAPI.searchArtist(response.album.artist);
 
       console.log("Response in AlbumDetails: ", response);
+      console.log("ArtistResponse in AlbumDetails: ", artistResponse);
+      
       setData(response.album);
+      setArtistMbid(artistResponse.results.artistmatches.artist[0].mbid)
     };
     fetchData();
   }, [mbid]);
@@ -66,9 +71,15 @@ function AlbumDetails({ mbid }: { mbid: string }) {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-6">
-            <h1> {data?.name} </h1> 
+
+            <div style={{display: "flex", alignItems: "center"}}>
+            <h1> {data?.name} </h1>
+            <div style={{marginLeft: "20px"}}>
             <AlbumLikeButton name={data?.name || ""} mbid={mbid || ""}/>
-            <h3> {data?.artist}</h3>
+            </div>
+            </div>
+
+            <h3><Link to={'/details/artist/'+artistMbid}>{data?.artist}</Link></h3>
             {data?.wiki?.summary}
           </div>
           <div className="col-md-6">

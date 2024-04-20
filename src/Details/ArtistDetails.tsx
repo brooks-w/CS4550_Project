@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ListEntryCard from "../ListEntryCard";
 import LastFMAPI from "../LastFM";
+import ArtistClaimButton from "../ArtistClaimButton";
 
 interface Artist {
   name: string;
@@ -56,7 +57,9 @@ function ArtistDetails({ mbid }: { mbid: string }) {
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-6">
-            <h1> {name} </h1>
+            <h1> {name} </h1> 
+            <ArtistClaimButton mbid={mbid}/>
+            <br/>
             {summary}
           </div>
 
@@ -75,7 +78,7 @@ function ArtistDetails({ mbid }: { mbid: string }) {
                     descriptionLeft={album.artist?.name}
                     descriptionRight=""
                     summary = ''
-                    imageURL={album.image && album.image[3] ? album.image[2]["#text"] : ""}                  />
+                    imageURL={album.image && album.image[3] ? album.image[3]["#text"] : ""}                  />
                 </li>
               ))}
             </ul>

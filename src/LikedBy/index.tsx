@@ -59,34 +59,35 @@ function LikedBy() {
     fetchData();
   }, [mbid]);
 
-  return (
-    <div>
-      <div>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-6">
-              <h1> {data?.name} </h1>
-              <h3> {data?.artist}</h3>
-              {data?.wiki?.summary}
-            </div>
-            <div className="col-md-6">
-              <img src={data?.image?.[5]?.["#text"] ?? ""} />
-            </div>
+  if (currentUser.role == "ARTIST") {
+    return (
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-6">
+            <h1> {data?.name} </h1>
+            <h3> {data?.artist}</h3>
+            {data?.wiki?.summary}
           </div>
-
-          <ul>
-            {usersWhoLikedAlbum.map((user: any, key: any) => (
+          <div className="col-md-6">
+            <img src={data?.image?.[5]?.["#text"] ?? ""} />
+          </div>
+        </div>
+        <ul>
+          {usersWhoLikedAlbum.length > 0 &&
+            usersWhoLikedAlbum.map((user: any, key: any) => (
               <li>
-                <Link to={"/account/profile/" + user._id}>
+                <Link to={"/account/profile/" + user.username}>
                   <h3>{user.username}</h3>
                 </Link>
               </li>
             ))}
-          </ul>
-        </div>
+          {usersWhoLikedAlbum.length == 0 && <h3>No likes</h3>}
+        </ul>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return <h1>Please log in as artist</h1>;
+  }
 }
 
 export default LikedBy;
