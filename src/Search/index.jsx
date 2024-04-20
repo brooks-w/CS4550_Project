@@ -45,7 +45,7 @@ function Search() {
       {query && results && results.results && (
         <>
           {type === "artist" && (
-            <ArtistList artists={results.results.artistmatches.artist} />
+            <ArtistList artists={results.results.artistmatches.artist.filter((artist) => artist.mbid != "")} />
           )}
           {type === "album" && (
             <AlbumList albums={results.results.albummatches.album} />

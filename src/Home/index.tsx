@@ -9,6 +9,7 @@ import {
 import ListEntryCard from "../ListEntryCard";
 import { useSelector } from "react-redux";
 import * as client from "../Users/client";
+import AlbumEntryCardHome from "../AlbumEntryCardHome";
 
 function Home() {
   const { currentUser } = useSelector((state: any) => state.users);
@@ -60,9 +61,8 @@ function Home() {
                 {userLikes.length > 0 &&
                   userLikes.slice(0, 5).map((like: any, key: number) => (
                     <li key={like._id}>
-                      Album: {like.album}, User: {like.user}, Created At:{" "}
-                      {like._id}
-                    </li>
+                    <AlbumEntryCardHome mbid={like.album} uid={like.user}/>
+                  </li>
                   ))}
               </ul>
             </div>
@@ -72,7 +72,7 @@ function Home() {
             <ul>
               {genericLikes.slice(0, 5).map((like: any, key: number) => (
                 <li key={like._id}>
-                  Album: {like.album}, User: {like.user}, Created At: {like._id}
+                  <AlbumEntryCardHome mbid={like.album} uid={like.user}/>
                 </li>
               ))}
             </ul>

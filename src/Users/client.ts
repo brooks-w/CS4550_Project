@@ -94,6 +94,13 @@ export const findUserByUsername = async (username: any) => {
   return response.data;
 };
 
+export const findUserByUid = async (uid: any) => {
+  const response = await axiosWithCredentials.get(`${USERS_API}/id/${uid}`);
+  return response.data;
+};
+
+
+
 export const getAllLikes = async () => {
   const response = await axiosWithCredentials.get(`${NODE_API}/api/likes`);
   return response.data;

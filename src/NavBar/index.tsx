@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 function NavBar() {
   const [query, setQuery] = useState("");
-  const [queryType, setQueryType] = useState("");
+  const [queryType, setQueryType] = useState("artist");
   const { currentUser } = useSelector((state: any) => state.users);
 
   const updateSearchQuery = (event: {
