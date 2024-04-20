@@ -4,7 +4,15 @@ import ListEntryCard from "../ListEntryCard";
 
 function ArtistList({artists}: {artists: any[]}) {
 
+
+if(artists.length == 0) {
+  return <div>
+    <h3>No artists found</h3>
+  </div>
+}
+
   return (
+    artists.length > 0 &&
     <div>
       <ul>
         {artists.map((artist, index) => (

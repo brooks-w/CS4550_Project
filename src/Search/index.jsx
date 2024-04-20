@@ -44,10 +44,10 @@ function Search() {
     <div className="container-fluid">
       {query && results && results.results && (
         <>
-          {type === "artist" && (
+          {type === "artist" &&(
             <ArtistList artists={results.results.artistmatches.artist.filter((artist) => artist.mbid != "")} />
           )}
-          {type === "album" && (
+          {type === "album" &&(
             <AlbumList albums={results.results.albummatches.album} />
           )}
         </>

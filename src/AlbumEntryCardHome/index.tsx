@@ -46,14 +46,14 @@ function AlbumEntryCardHome(mbid: any) {
   return (
     <div className="card mb-3">
       <div className="row g-0">
-        <div className="col-md-2">
+        <div className="col-md-2 col-lg-4">
           <img
-            src={data?.image?.[3]?.["#text"] ?? ""}
+            src={data?.image?.[4]?.["#text"] ?? ""}
             alt={data?.name}
             className="img-fluid rounded-start"
           />
         </div>
-        <div className="col-md-10">
+        <div className="col-md-10 col-lg-8">
           <div className="card-body">
             <div className="card-title">
               <Link to={"/details/album/" + mbid.mbid}>

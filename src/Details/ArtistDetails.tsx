@@ -78,7 +78,7 @@ function ArtistDetails({ mbid }: { mbid: string }) {
                     descriptionLeft={album.artist?.name}
                     descriptionRight=""
                     summary = ''
-                    imageURL={album.image && album.image[3] ? album.image[2]["#text"] : ""}                  />
+                    imageURL={album.image && album.image[3] ? album.image[3]["#text"] : ""}                  />
                 </li>
               ))}
             </ul>

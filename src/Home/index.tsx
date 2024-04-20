@@ -36,6 +36,8 @@ function Home() {
       );
       setUserLikes(userLikes);
     }
+
+    console.log("Home page userLikes: ", userLikes)
     setGenericLikes(sortedLikes);
   };
 
@@ -43,12 +45,6 @@ function Home() {
     getGenericLikes();
   }, []);
 
-  for (let i = 0; i < 5; i++) {
-    if (genericLikes.length < i) {
-      break;
-    }
-    //truncatedGenericLikes.push(genericLikes[i]);
-  }
 
   return (
     <div style={{ height: "100%" }}>

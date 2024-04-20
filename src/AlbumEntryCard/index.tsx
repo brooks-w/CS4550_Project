@@ -24,7 +24,6 @@ function AlbumEntryCard({
               <Link to={url}><h2>{title}</h2></Link>
               <p className="card-text text-body-secondary">{artist}</p>
             </div>
-           
           </div>
         </div>
       </div>
