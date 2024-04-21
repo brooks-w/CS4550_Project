@@ -63,8 +63,8 @@ function Home() {
               </ul>
             </div>
           )}
-          <div className="col-md-6">
-            <h2>5 Most Recently Liked Albums:</h2>
+          <div className={currentUser? "col-md-6": "col-12"}>
+            <h2>5 Most Recent Likes:</h2>
             <ul>
               {genericLikes.slice(0, 5).map((like: any, key: number) => (
                 <li key={like._id}>

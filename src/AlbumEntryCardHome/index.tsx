@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import LastFMAPI from "../LastFM";
-import * as client from "../Users/client"
+import * as client from "../Users/client";
 
 interface Album {
   mbid: string;
@@ -59,13 +59,16 @@ function AlbumEntryCardHome(mbid: any) {
               <Link to={"/details/album/" + mbid.mbid}>
                 <h2 className="mb-0">{data?.name}</h2>
               </Link>
-              <p className="card-text text-muted">{data?.artist}</p>
+              <h5 className="card-text text-muted">
+                {data?.artist} {" | "}
+                <small className="text-muted">
+                  Liked by{" "}
+                  <Link to={"/account/profile/" + user?.username}>
+                    {user?.username}
+                  </Link>
+                </small>
+              </h5>
             </div>
-            <p className="card-text">
-              <small className="text-muted">Liked by {" "}
-              <Link to={'/account/profile/'+user?.username}>{user?.username}</Link>
-              </small>
-            </p>
           </div>
         </div>
       </div>
