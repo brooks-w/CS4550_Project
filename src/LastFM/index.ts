@@ -7,7 +7,7 @@ class LastFMAPI {
 
   constructor() {
     this.apiKey = process.env.REACT_APP_LASTFM_API_KEY || 'ERROR:APIKEYNOTFOUND';
-    this.baseUrl = 'http://ws.audioscrobbler.com/2.0';
+    this.baseUrl = 'https://ws.audioscrobbler.com/2.0';
   }
 
   async searchArtist(query: string) {
