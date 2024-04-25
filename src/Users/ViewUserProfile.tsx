@@ -44,8 +44,9 @@ function ViewUserProfile() {
           <h3>Favorite Arist: {currentProfile.favArtist}</h3>
         </>
       )}
-        {currentUser && currentProfile.role === "ARTIST" && (
+        {currentProfile.role === "ARTIST" && (
         <>
+        <h3>Claimed artist:</h3>
         <ArtistEntryCard mbid={currentProfile.claimedArtistMBID}/>
         </>
       )}

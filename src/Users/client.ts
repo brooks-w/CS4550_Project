@@ -60,7 +60,6 @@ export const deleteUser = async (user: any) => {
   return response.data;
 };
 
-
 export const userLikesAlbum = async (album: any) => {
   const response = await axiosWithCredentials.post(
     `${NODE_API}/api/likes`,
@@ -99,9 +98,15 @@ export const findUserByUid = async (uid: any) => {
   return response.data;
 };
 
-
-
 export const getAllLikes = async () => {
   const response = await axiosWithCredentials.get(`${NODE_API}/api/likes`);
+  return response.data;
+};
+
+export const claimArtist = async (artist: any) => {
+  const response = await axiosWithCredentials.post(
+    `${NODE_API}/api/artist`,
+    artist
+  );
   return response.data;
 };

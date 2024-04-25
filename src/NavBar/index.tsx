@@ -28,14 +28,14 @@ function NavBar() {
   return (
     <div className="container-fluid form-group navbar-container">
       <div className="row p-2 navbar-row">
-        <div className="col-6">
+        <div className="col-2">
           <div className="row">
-            <div className="col-2 p-2 btn btn-primary-navbar bg-color-5">
+            <div className="col-6 p-2 btn btn-primary-navbar bg-color-5">
               <Link className="home-button-style" to="/home">
                 <MdHome className="navbar-icon" />
               </Link>
             </div>
-            <div className="col-2 p-2 btn btn-primary-navbar bg-color-5">
+            <div className="col-6 p-2 btn btn-primary-navbar bg-color-5">
               {currentUser && (
                 <Link
                   className="home-button-style"
@@ -52,9 +52,9 @@ function NavBar() {
             </div>
           </div>
         </div>
-        <div className="col-6">
+        <div className="col-10">
           <div className="row align-items-center float-end">
-            <div className="col-5 p-2">
+            <div className="col-6 p-2">
               <input
                 type="text"
                 id="txtSearch"
@@ -63,7 +63,7 @@ function NavBar() {
                 onChange={updateSearchQuery}
               />
             </div>
-            <div className="col-5 p-2">
+            <div className="col-4 p-2">
               <select
                 className="form-control"
                 title="Type"

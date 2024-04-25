@@ -44,16 +44,16 @@ function AlbumEntryCardHome(mbid: any) {
   }, [mbid]);
 
   return (
-    <div className="card mb-3">
-      <div className="row g-0">
-        <div className="col-md-2 col-lg-4">
+    <div className="container-fluid card mb-3">
+      <div className="row g-0 p-2 ">
+        <div className="col-2 col-lg-4 align-items-center">
           <img
             src={data?.image?.[4]?.["#text"] ?? ""}
             alt={data?.name}
-            className="img-fluid rounded-start"
+            className="img-fluid rounded"
           />
         </div>
-        <div className="col-md-10 col-lg-8">
+        <div className="col-10 col-lg-8">
           <div className="card-body">
             <div className="card-title">
               <Link to={"/details/album/" + mbid.mbid}>

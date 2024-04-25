@@ -24,7 +24,7 @@ export default function Signup() {
       <input value={user.email} onChange={(e) => setUser({
             ...user, email: e.target.value })} />  <br />
         <label>Password</label>
-      <input value={user.password} onChange={(e) => setUser({
+      <input type="password" value={user.password} onChange={(e) => setUser({
           ...user, password: e.target.value })} /> <br />
       <input type="radio" name="role" value="LISTENER" onChange={(e) => setUser({
             ...user, role: e.target.value })} />

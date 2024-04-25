@@ -7,6 +7,7 @@ import { text } from "stream/consumers";
 import ViewUserProfile from "./ViewUserProfile";
 import { current } from "@reduxjs/toolkit";
 import AlbumEntryCardHome from "../AlbumEntryCardHome";
+import ArtistEntryCard from "../ArtistEntryCard";
 
 export default function Profile() {
   const dispatch = useDispatch();
@@ -63,10 +64,11 @@ export default function Profile() {
       dispatch(setCurrentUser(user));
     } catch (error) {
       dispatch(setCurrentUser(null));
-      navigate("/Account/Signin");
+      //navigate("/Account/Signin");
     }
   };
   const save = async () => {
+    dispatch(setCurrentUser(user));
     await client.updateUser(user);
   };
   const signout = async () => {
@@ -138,13 +140,10 @@ export default function Profile() {
             )}
             <br />
             <span>ROLE: {user.role}</span> <br />
-            {user.role === "ARTIST" && (
+            {user.role === "ARTIST" && !user.claimedArtistMBID && (
               <>
                 <label>Claim Artist: </label>
-                <input
-                  value={user.claimedArtistMBID || ""}
-                  onChange={(e) => setArtistQuery(e.target.value)}
-                />
+                <input onChange={(e) => setArtistQuery(e.target.value)} />
                 <Link to={"/search/artist/" + artistQuery}>Search</Link>
               </>
             )}
@@ -160,19 +159,31 @@ export default function Profile() {
         </>
       )}
       {user && user.username == username && (
-        <>
+        <div>
+          {user.role === "ARTIST" && user.claimedArtistMBID && (
+            <>
+              <h3>Claimed artist:</h3>
+              <ul>
+                <li>
+                  <ArtistEntryCard mbid={user.claimedArtistMBID} />
+                </li>
+              </ul>
+            </>
+          )}
+          <h3>Liked albums:</h3> <br />
           <ul>
             {userLikes &&
               userLikes.length > 0 &&
               userLikes.map((like: any, key: any) => (
                 <li>
-                  <Link to={"/album/" + like.album}>
+                  <Link to={"/details/album/" + like.album}>
                     {<AlbumEntryCardHome mbid={like.album} uid={like.user} />}
                   </Link>
                 </li>
               ))}
           </ul>
-        </>
+          {userLikes && userLikes.length == 0 && <h4> No Liked Albums </h4>}
+        </div>
       )}
     </div>
   );

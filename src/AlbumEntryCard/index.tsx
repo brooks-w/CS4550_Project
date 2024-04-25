@@ -10,19 +10,19 @@ function AlbumEntryCard({
 }) {
   return (
     <div className="card mb-3">
-      <div className="row g-0">
-        <div className="col-md-2">
+      <div className="row p-2 g-0">
+        <div className="align-items-center col-2 col-lg-4 ">
           <img
             src={imageURL}
-            className="img-fluid rounded-start"
+            className=" img-fluid rounded"
             alt="..."
           />
         </div>    
-        <div className="col-md-10">
+        <div className="col-10 col-lg-8">
           <div className="card-body">
             <div className="card-title">
               <Link to={url}><h2>{title}</h2></Link>
-              <p className="card-text text-body-secondary">{artist}</p>
+              <h5 className="card-text text-body-secondary">{artist}</h5>
             </div>
           </div>
         </div>

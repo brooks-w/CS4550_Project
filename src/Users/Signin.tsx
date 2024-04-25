@@ -34,8 +34,10 @@ export default function Signin() {
       <input
         value={credentials.password}
         onChange={(e) =>
-          setCredentials({ ...credentials, password: e.target.value })
+          setCredentials({ ...credentials, password: e.target.value }
+                      )
         }
+        type="password"
       />
       <button onClick={signin}> Log In </button>
       <h3>Don't have an account? Create an account here:               
