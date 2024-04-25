@@ -69,8 +69,8 @@ function AlbumDetails({ mbid }: { mbid: string }) {
   return (
     <div>
       <div className="container-fluid">
-        <div className="row">
-          <div className="col-md-6">
+        <div className="row p-4">
+          <div className="col-6">
 
             <div style={{display: "flex", alignItems: "center"}}>
             <h1> {data?.name} </h1>
@@ -82,7 +82,7 @@ function AlbumDetails({ mbid }: { mbid: string }) {
             <h3><Link to={'/details/artist/'+artistMbid}>{data?.artist}</Link></h3>
             {data?.wiki?.summary}
           </div>
-          <div className="col-md-6">
+          <div className="col-6">
             <img src={data?.image?.[5]?.["#text"] ?? ""} />
           </div>
         </div>

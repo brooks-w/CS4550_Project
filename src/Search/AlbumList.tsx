@@ -2,7 +2,7 @@ import AlbumEntryCard from "../AlbumEntryCard";
 import ListEntryCard from "../ListEntryCard";
 
 function AlbumList({ albums }: { albums: any[] }) {
-  if (albums && albums.length == 0) {
+  if (albums.length == 0) {
     return (
       <div>
         <h3>No albums found</h3>
